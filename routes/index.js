@@ -6,8 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { PageHeader:'Service Providers' , title: 'testing'});
 });
 
-router.get('/error', function(req, res, next) {
-  res.render('error', { title: 'Nanan' });
+router.get('/login', (req, res, next) => {
+  res.render('login', { title: 'Nanan' ,layout: false});
 });
 
 module.exports = router;

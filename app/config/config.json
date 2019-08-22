@@ -6,14 +6,14 @@
   "development": {
     "username": "root",
     "password": "",
-    "database": "the_social_cms",
+    "database": "nodejs-cms",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "baseUrl": "http://localhost:3000/",
     "notificationUrl": "http://localhost:4200/",
     "apiUrls": [
       "http://localhost:4200"
-    ],
+    ]
   },
   "production": {
     "username": "root",
@@ -21,8 +21,8 @@
     "database": "",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "logging":false,
+    "logging": false,
     "baseUrl": "",
-    "apiUrls": [],
+    "apiUrls": []
   }
 }
