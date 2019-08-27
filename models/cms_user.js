@@ -1,6 +1,5 @@
 "use strict";
 var _ = require('lodash');
-var models = require('../models/');
 var validator = require('validator');
 var path = require("path");
 
