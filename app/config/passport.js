@@ -11,20 +11,22 @@ module.exports =(passport)=> {
                 email: username
             }
         }).then(cms_user => {
-                if (!cms_user) {
+            // console.log('cms user===>',cms_user);
+                if (!cms_user || cms_user.length == 0) {
                     return done(null, false, req.flash('message', 'User Not Exist'));
                 }
-                if (!cms_user.status) {
+                if (!cms_user[0].status) {
+                    
                     return done(null, false, req.flash('message', 'User Not Exist'));
                 }
-                bcrypt.compare(password, cms_user.password, (err, isMatch) => {
+                bcrypt.compare(password, cms_user[0].password, (err, isMatch) => {
                     if (err) {
                         return done(null, false, req.flash('message', err));
 
                     }
 
                     if (isMatch) {
-                        return done(null, cms_user);
+                        return done(null, cms_user[0]);
                     } else {
                         return done(null, false, req.flash('message', "Password is incorrect"));
                     }
@@ -44,9 +46,9 @@ passport.serializeUser( (user, done)=> {
 });
 
 passport.deserializeUser( (req, id, done) =>{
-    models.cms_user.findAll({ id: id})
-    .then((user)=> {
-        done(null, user);
+    models.cms_user.findAll({where:{ id: id}})
+    .then((cmsuser)=> {
+        done(null, cmsuser);
     }).catch((err)=> {
         if (err) {
             return done(err);

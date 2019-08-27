@@ -13,7 +13,7 @@ app.use(passport.session());
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/dashbord', function(req, res, next) {
   res.render('error', { title: 'sadasd' });
 });
 
@@ -43,7 +43,7 @@ router.get('/login', (req, res, next) => {
 
 router.post('/login',
     passport.authenticate('local', {
-      successRedirect: "/admin",
+      successRedirect: "/users/dashbord",
       failureRedirect: '/users/login',
       failureFlash: true
     }));
