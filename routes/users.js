@@ -18,32 +18,21 @@ router.get('/dashbord', function(req, res, next) {
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('login', { title: 'Nanan' ,layout: false});
+  res.render('login', {
+      title: 'Nanan' ,
+      layout: false,
+      errorMsg:req.flash('error_msg')});
 });
 
-// router.post('/login',(req,res,next)=>{
-//   const {username,password}=req.body;
-//   let errors =[];
-//   if(!username || !password){
-//     errors.push({msg:'Please Fill All Fields'});
-//   }
-//
-//   if(errors.length>0){
-//     res.render('login',{
-//       errors,
-//       username,
-//       password,
-//       layout: false
-//     })
-//   }
-//   else {
-//
-//   }
-// });
+router.get('/logout',
+    function (req, res) {
+        req.logout();
+        res.redirect('/users/login');
+    });
 
 router.post('/login',
     passport.authenticate('local', {
-      successRedirect: "/users/dashbord",
+      successRedirect: "/",
       failureRedirect: '/users/login',
       failureFlash: true
     }));

@@ -1,0 +1,22 @@
+{{#if errorMsg}}
+    {{#each errorMsg}}
+
+<div class="alert alert-custom alert-dismissible show">
+  {{this}}
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>
+    {{/each}}
+{{/if}}
+
+
+<style>
+    .alert-custom{
+        color:#721c24;
+        background-color:#f8d7da;
+        border-color:#f5c6cb;
+    }
+</style>
+
+
+
+
